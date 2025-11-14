@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Compresor de PDF</title>
+        
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <!-- Favicon del Proyecto -->
+        <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon">
+
+        <!-- PDF.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+        
+        <!-- Estilos personalizados -->
+        <link rel="stylesheet" href="assets/CSS/styles.css">
+    </head>
+    <body>
+        <!-- Contenedor principal -->
+        <div class="main-container">
+            <div class="app-wrapper">
+                
+                <!-- Header -->
+                <div class="app-header">
+                    <i class="fas fa-file-pdf fa-3x mb-3"></i>
+                    <h1 class="mb-2">Compresor de PDF</h1>
+                    <p class="mb-0">Comprime hasta 5 archivos PDF de forma rápida y sencilla</p>
+                </div>
+
+                <!-- Contenido principal -->
+                <div class="app-body">
+                    
+                    <!-- Control de calidad de compresión -->
+                    <div class="compression-control mb-4">
+                        <label for="compressionQuality" class="form-label">
+                            <i class="fas fa-sliders-h"></i>
+                            Nivel de compresión: <span id="qualityValue" class="quality-badge">50%</span>
+                        </label>
+                        <input 
+                            type="range" 
+                            class="form-range compression-slider" 
+                            id="compressionQuality" 
+                            min="10" 
+                            max="90" 
+                            value="50"
+                            step="5">
+                        <div class="d-flex justify-content-between mt-2">
+                            <small class="text-muted">
+                                <i class="fas fa-compress-alt"></i> Mayor compresión
+                            </small>
+                            <small class="text-muted">
+                                <i class="fas fa-expand-alt"></i> Mayor calidad
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Zona de carga de archivos -->
+                    <div id="dropZone" class="drop-zone">
+                        <i class="fas fa-cloud-upload-alt fa-4x mb-3"></i>
+                        <h3>Arrastra tus archivos PDF aquí</h3>
+                        <p class="text-muted mb-3">o haz clic para seleccionarlos</p>
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fas fa-folder-open me-2"></i>
+                            Seleccionar Archivos
+                        </button>
+                        <input type="file" id="fileInput" accept=".pdf" multiple hidden>
+                    </div>
+
+                    <!-- Alertas de error -->
+                    <div id="errorContainer"></div>
+
+                    <!-- Lista de archivos -->
+                    <div id="fileListContainer" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">
+                                Archivos seleccionados 
+                                (<span id="fileCount">0</span>/5)
+                            </h5>
+                            <button id="addMoreBtn" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-plus me-1"></i>
+                                Agregar más
+                            </button>
+                        </div>
+
+                        <div id="fileList"></div>
+
+                        <!-- Barra de progreso -->
+                        <div id="progressContainer" class="progress-container" style="display: none;">
+                            <div class="alert alert-info mb-2">
+                                <i class="fas fa-spinner fa-spin me-2"></i>
+                                <span id="progressText">Comprimiendo... 0 de 0</span>
+                            </div>
+                            <div class="progress">
+                                <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                                    role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Mensaje de éxito -->
+                        <div id="successMessage" class="alert alert-success" style="display: none;">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <span>¡Compresión completada exitosamente!</span>
+                        </div>
+
+                        <!-- Botones de acción -->
+                        <div class="action-buttons">
+                            <button id="compressBtn" class="btn btn-success btn-lg flex-fill">
+                                <i class="fas fa-compress-arrows-alt me-2"></i>
+                                Comprimir Archivos
+                            </button>
+                            <button id="downloadAllBtn" class="btn btn-primary btn-lg flex-fill" style="display: none;">
+                                <i class="fas fa-download me-2"></i>
+                                Descargar Todos
+                            </button>
+                            <button id="clearBtn" class="btn btn-outline-danger btn-lg">
+                                <i class="fas fa-trash-alt me-2"></i>
+                                Limpiar
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer -->
+                <div class="app-footer">
+                    <i class="fas fa-shield-alt me-2"></i>
+                    <small>Tus archivos se procesan localmente en tu navegador. No se envían a ningún servidor.</small>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- JavaScript de la aplicación -->
+        <script src="assets/JS/app.js"></script>
+    </body>
+</html>

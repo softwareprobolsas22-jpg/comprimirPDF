@@ -1,0 +1,472 @@
+/* =============================================================================
+    VARIABLES Y CONFIGURACIÓN GLOBAL
+============================================================================= */
+:root {
+    --primary-color: #4caf50;
+    --primary-dark: #45a049;
+    --primary-light: #81c784;
+    --danger-color: #f44336;
+    --warning-color: #ff9800;
+    --success-color: #4caf50;
+    --info-color: #2196f3;
+    --text-color: #333;
+    --border-color: #ddd;
+    --bg-light: #f9f9f9;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* =============================================================================
+    ESTILOS GENERALES
+============================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+/* =============================================================================
+    CONTENEDOR PRINCIPAL
+============================================================================= */
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.app-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+/* =============================================================================
+    HEADER
+============================================================================= */
+.app-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.app-header i {
+    opacity: 0.95;
+}
+
+.app-header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.app-header p {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+/* =============================================================================
+    CUERPO DE LA APLICACIÓN
+============================================================================= */
+.app-body {
+    padding: 30px;
+}
+
+/* =============================================================================
+   CONTROL DE COMPRESIÓN
+   ============================================================================= */
+.compression-slider {
+    cursor: pointer;
+    height: 8px;
+    background: linear-gradient(to right, #4caf50 0%, #81c784 100%);
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.compression-slider:hover {
+    background: linear-gradient(to right, #45a049 0%, #4caf50 100%);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Thumb - Chrome/Safari */
+.compression-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 3px solid #4caf50;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.compression-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    border-color: #45a049;
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.4);
+}
+
+.compression-slider::-webkit-slider-thumb:active {
+    transform: scale(1.1);
+    background: #4caf50;
+}
+
+/* Thumb - Firefox */
+.compression-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 3px solid #4caf50;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.compression-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    border-color: #45a049;
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.4);
+}
+
+.compression-slider::-moz-range-thumb:active {
+    transform: scale(1.1);
+    background: #4caf50;
+}
+
+/* Track - Firefox */
+.compression-slider::-moz-range-track {
+    background: linear-gradient(to right, #4caf50 0%, #81c784 100%);
+    border-radius: 10px;
+    height: 8px;
+}
+
+/* =============================================================================
+    ZONA DE CARGA (DROP ZONE)
+============================================================================= */
+.drop-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 60px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--bg-light);
+    margin-bottom: 20px;
+}
+
+.drop-zone:hover {
+    border-color: var(--primary-color);
+    background: #f1f8f4;
+}
+
+.drop-zone.drag-over {
+    border-color: var(--primary-color);
+    background: #e8f5e9;
+    transform: scale(1.02);
+}
+
+.drop-zone i {
+    color: var(--primary-color);
+    opacity: 0.8;
+}
+
+.drop-zone h3 {
+    color: var(--text-color);
+    font-size: 20px;
+    margin: 15px 0 10px;
+}
+
+.drop-zone p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* =============================================================================
+    TARJETAS DE ARCHIVO
+============================================================================= */
+.file-card {
+    background: var(--bg-light);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.file-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.file-info {
+    flex: 1;
+}
+
+.file-name {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.file-name i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.file-name span {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.file-details {
+    margin-left: 28px;
+    font-size: 13px;
+    color: #666;
+}
+
+.reduction-badge {
+    background: #e8f5e9;
+    color: var(--success-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.file-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* =============================================================================
+    BOTONES
+============================================================================= */
+.btn {
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-success:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-outline-success {
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-outline-success:hover {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.btn-outline-danger {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* =============================================================================
+    BOTONES DE ACCIÓN
+============================================================================= */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.action-buttons .flex-fill {
+    flex: 1;
+}
+
+/* =============================================================================
+    CONTENEDOR DE PROGRESO
+============================================================================= */
+.progress-container {
+    margin: 20px 0;
+}
+
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--info-color);
+    transition: width 0.3s ease;
+}
+
+/* =============================================================================
+    ALERTAS PERSONALIZADAS
+============================================================================= */
+.alert {
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.alert i {
+    margin-right: 8px;
+}
+
+.alert-danger {
+    background-color: #ffebee;
+    border: 1px solid var(--danger-color);
+    color: #c62828;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    border: 1px solid var(--success-color);
+    color: #2e7d32;
+}
+
+.alert-info {
+    background-color: #e3f2fd;
+    border: 1px solid var(--info-color);
+    color: #1976d2;
+}
+
+/* =============================================================================
+    FOOTER
+============================================================================= */
+.app-footer {
+    background: #f5f5f5;
+    padding: 15px 30px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+}
+
+.app-footer small {
+    color: #666;
+    font-size: 12px;
+}
+
+.app-footer i {
+    color: var(--success-color);
+}
+
+/* =============================================================================
+    RESPONSIVE
+============================================================================= */
+@media (max-width: 768px) {
+    .app-header h1 {
+        font-size: 24px;
+    }
+
+    .app-body {
+        padding: 20px;
+    }
+
+    .drop-zone {
+        padding: 40px 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .file-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .file-actions {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .file-actions button {
+        flex: 1;
+    }
+}
+
+/* =============================================================================
+    ANIMACIONES
+============================================================================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.file-card {
+    animation: fadeIn 0.3s ease;
+}
+
+/* =============================================================================
+    ESTADOS DE CARGA
+============================================================================= */
+.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.spinner {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
